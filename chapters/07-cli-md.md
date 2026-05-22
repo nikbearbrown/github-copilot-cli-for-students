@@ -134,6 +134,8 @@ reference for the class — broken site = broken week.
 
 Roughly 40 lines. Five "never" rules. Three lessons-learned entries. Project overview in one paragraph. The file is short enough to read in two minutes and useful enough that pasting from it changes every `gh copilot suggest` session in this project.
 
+> **What CLI.md looks like at full strength.** The 40-line example above is the student-scale starting point. For a reference implementation of the same discipline at production scale, see Appendix A (`chapters/98-appendix-walker-and-zelda.md`). Walker and Zelda — two AI agents Seth and his dad built and shipped publicly at humanitarians.ai/tools — each carry a multi-thousand-line system prompt that encodes years of accumulated rules, phase gates, failure-mode catalogs, and pushback conventions. They are persistent-context files of the kind CLI.md becomes when a project stops being student-scale and becomes the way you actually work. Read the appendix when you want to see what the file looks like after the lessons-learned section has been compounding for a long time.
+
 ---
 
 ## How to paste effectively

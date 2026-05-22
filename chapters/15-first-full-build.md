@@ -28,23 +28,29 @@ The chapter is short. Most of it is the brief. The rest is the discipline you ha
 
 A shell project at student-scale that exercises all five supervisory capacities.
 
-**Recommended project: a repository hygiene script.** The same project Seth used in Chapter 11–13. The brief:
+**Recommended project: a repository hygiene script.** The same project Seth used in Chapter 11–13 — extend it, harden it, or adapt it to your stack. The brief:
 
-> Build a shell script that reduces disk usage in a git repository by removing *generated artifacts* (`node_modules/`, `dist/`, `build/`, and similar) from non-active branches, while preserving the currently-checked-out branch and any explicitly-preserved reference snapshots.
+> Build a shell script that reduces disk usage in a git repository by removing *generated artifacts* (`.godot/imported/`, `.import/`, `addons/.cache/`, `builds/`, or the equivalent for whatever stack you work in — `node_modules/`, `dist/`, `target/`) from non-active branches, while preserving the currently-checked-out branch and any explicitly-preserved reference snapshots.
 >
 > Inputs: the git repository to clean (default: current directory).
 > Outputs: a report of branches cleaned and disk space recovered, written to stdout. Optionally: a log file at `~/.repo-hygiene-history.log` with timestamps.
 > Constraints: the active branch must be unchanged after the script runs. The script must not delete files that are not generated artifacts. The script must not modify `.git/objects/` or other git internals.
 
-If the repository-hygiene project does not match your situation, two alternatives:
+If the repository-hygiene project does not match your situation, five alternatives — pick the one that maps to a project you actually own:
 
-**Alternative A: a daily-backup script.** Build a script that backs up your `~/projects/` directory to a specified backup location, with per-project archives, exclusions for `node_modules/` etc., and a restore-test that confirms each backup is restorable.
+**Alternative A: a Godot export-preset validator.** Build a script that reads `export_presets.cfg` for one of your Godot projects and verifies that each preset has the right signing config, icon sizes, version string, and feature tags before you publish a build. Catches the "I forgot to bump the Android version code" failure that costs you a Play Store submission.
 
-**Alternative B: a development-environment bootstrapper.** Build a script that sets up your preferred development environment on a new machine — dotfiles, CLI tools, git config — idempotently (running it twice should produce the same state, not break).
+**Alternative B: a Roblox place-file packaging script.** Build a script that takes the latest `.rbxlx` of a Roblox project (e.g., Midnight Fuel), zips it together with the asset folder, the changelog, and a generated release-notes file, and writes a release package to `~/releases/<project>-<date>.zip`.
 
-All three projects exercise all five capacities. All three are deployable in your own work. All three produce a post-build document worth writing.
+**Alternative C: a weekly dev-log generator.** The creative-build from Chapter 11 — reads git commits across your active repos plus a drafts folder plus a to-do file, produces a markdown weekly dev log in your voice. Apply the *Voice and aesthetic conventions* discipline you wrote in Chapter 11's CLI.md section.
 
-Pick one. Or pick something else of comparable shape and scope (multi-step, touches the filesystem, needs handoff conditions, has a dangerous-middle hazard). The brief is the orientation; the choice is yours.
+**Alternative D: a custom `CLI.md` / `AGENTS.md` / `CLAUDE.md` for one of your own projects.** Author the persistent-context file at full strength for a project you maintain. Use Walker and Zelda (Appendix A — `chapters/98-appendix-walker-and-zelda.md`) as reference implementations of what a mature CLI-discipline document looks like. The "build" here is the document; the verification is whether a fresh CLI session that reads it produces work consistent with your standards.
+
+**Alternative E: a daily-backup script or a development-environment bootstrapper.** Back up your `~/Projects/` to a specified location with per-project archives and a restore-test; or bootstrap your dev environment on a new machine idempotently (dotfiles, CLI tools, git config, Godot/Roblox/Node toolchains).
+
+All projects exercise all five capacities. All are deployable in your own work. All produce a post-build document worth writing.
+
+Pick one. Or pick something else of comparable shape and scope (multi-step, touches the filesystem or a persistent-context file, needs handoff conditions, has a dangerous-middle hazard). The brief is the orientation; the choice is yours.
 
 ---
 

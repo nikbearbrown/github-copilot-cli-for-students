@@ -84,6 +84,8 @@ A `wc -l *.py` that counts blank lines, comment lines, and code lines equally. T
 
 This shape is the hardest. The explain step often does not catch it because the explain step is *about the command*, and the command is right *for what it does*. Catching it requires **plausibility auditing** (Chapter 5) on the output, not on the explain — reading the output against what you actually need to know.
 
+The pattern — *the system reports success, the report is true, the user's expectation diverged anyway* — is not terminal-specific. Seth has documented it in published criticism of shipped commercial games. In an analysis of *Helldivers 2*'s audio design and patch history, he traces the studio's mid-season patch that increased the 500kg bomb's kill radius. The pre-patch radius was small. The visual effect — a mushroom cloud the size of a building — was large. The game's internal state machine reported the bomb doing exactly what its code specified; the explosion damage curve was the curve the designers had written. Players reading the trailer's perceptual claim experienced the gap between visual footprint and mechanical footprint as silent failure: the system did what it said, and what it said was not what they needed. The patch took weeks. It required regression testing across every enemy type and environmental object in the game. Seth's gloss on the lesson — *ship with alignment baked in; do not plan to patch this* — is the game-design version of the discipline this chapter teaches at the terminal. Silent failure is not a terminal pathology. It is the structural feature of any system where the report and the actual effect can diverge without the diverge raising an alarm.
+
 ---
 
 ## What the research says
@@ -160,9 +162,9 @@ This is what the homework/quiz gap looks like at the terminal.
 
 ## Worked example: two students, same task, six weeks later
 
-Two AP CS students. Both need to write an automation script for a class data project — process student survey responses from a CSV, filter rows, output summary stats.
+Two AP CS students. Both need to write an automation script for a side project — process a Bubble Pop AdMob earnings export from a CSV, filter rows, output summary stats by ad unit.
 
-**Student A** runs `gh copilot suggest "process student survey CSV and output summary stats"`. The CLI returns a small Python script that uses `pandas` to read the CSV, filter on a column, and print a summary. Student A copies the script, runs it on the data, gets sensible-looking output. Done.
+**Student A** runs `gh copilot suggest "process AdMob earnings CSV and output summary stats by ad unit"`. The CLI returns a small Python script that uses `pandas` to read the CSV, filter on a column, and print a summary. Student A copies the script, runs it on the data, gets sensible-looking output. Done.
 
 **Student B** runs the same `gh copilot suggest` and gets the same script. Student B then runs `gh copilot explain` on the script. The explanation walks through each `pandas` call. Student B notices that the script uses `groupby` in a way Student B does not understand. Student B reads the `pandas` docs for `groupby`. They run the script in a Jupyter notebook with intermediate outputs, watching what each step produces. They modify one line to test what happens if they group by a different column. They run the final script. They get sensible-looking output. Done.
 

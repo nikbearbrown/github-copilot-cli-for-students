@@ -96,6 +96,8 @@ Terminal example:
 
 TO is the conducting metaphor's most literal expression — you are scheduling the instruments. The decision of *which instrument to use, when, and with what context* is the work.
 
+What [TO] looks like at architectural scale: Seth has documented Team Cherry's choice of PlayMaker visual FSMs for all enemy AI and boss logic in *Hollow Knight*. The choice was not technical limitation — it was tool orchestration as architectural decision. PlayMaker's FSM viewer is inspectable by non-programmers, which let Ari Gibson (the artist-designer) and William Pellen (the programmer) collaborate on enemy behavior without requiring a traditional programmer for every encounter. The FSM graphs became the technical documentation: developers debugging the Radiance boss fight years later open Unity and read the graph. The graph *is* the spec. That is [TO] at the level of *which tool's intermediate representation does the team need to be able to read*. The terminal version asks the same question at a smaller scale. Which `gh copilot` tool's output do I need to be able to read carefully tomorrow, when I have lost the context I have right now? Pick the tool that produces a reading-friendly artifact, not just the tool that produces the command fastest.
+
 ---
 
 ## [IJ] Interpretive Judgment
@@ -124,7 +126,7 @@ A long terminal session has many commands. Each is locally reasonable. Without E
 
 Terminal example:
 
-> Seth's CLI.md (Chapter 6) for a project includes the rule "never push directly to `main`." Two hours into a build session, Seth runs:
+> Seth's CLI.md (Chapter 6) for the Haunt & Harvest repo includes three rules: "never push directly to `main`," "never delete anything under `.godot/imported/` mid-session — Godot is using it," and "always run the export-preset validator before tagging a release." Two hours into a build session, Seth runs:
 >
 > `gh copilot suggest "push my changes"`
 >

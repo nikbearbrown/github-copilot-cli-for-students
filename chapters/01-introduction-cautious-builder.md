@@ -18,21 +18,21 @@ By the end of this chapter, you will be able to:
 
 Seth was sitting next to a friend in the lab.
 
-The friend was on a Mac with the terminal open, processing a folder full of log files for an AP CS data project. The assignment was to archive the old logs and keep the recent ones. The friend typed:
+The friend was on a Mac with the terminal open, sitting inside a Godot project folder — one of Seth's, `~/Projects/HauntAndHarvest/builds/`. The friend was trying to be helpful: clear out the old build artifacts cluttering the directory before pushing a branch. The friend typed:
 
 ```
-gh copilot suggest "archive log files older than 7 days"
+gh copilot suggest "archive build artifacts older than 7 days"
 ```
 
 The CLI returned a `find` command. The friend skimmed it for half a second. It looked right. The friend appended `-exec mv {} archive/ \;` to the end and ran it.
 
 The command exited. No error. The terminal returned a prompt. The friend smiled and moved to the next task.
 
-Three days later, the friend came back to the lab confused. The data project was broken. Some logs that were supposed to still be active had moved to `archive/`. The friend could not figure out why — the command had said it processed seven files, which was about right, and they remembered checking the output before they ran it.
+Three days later, Seth came back to the project confused. Godot wouldn't import a scene. The editor was throwing cache errors on assets that had been working for months. He couldn't figure out why — the friend had said the cleanup processed seven files, which was about right, and they both remembered checking the output before running it.
 
-Seth, watching this, knew something the friend did not.
+Seth, retracing what had happened, found something the friend did not.
 
-The command did what the command said it would do. *Files older than 7 days were moved to archive/.* The problem was that "older than 7 days" in `find` syntax — specifically `-mtime +7` — meant *files whose modification time was more than 7 days ago*. The friend's project had some logs that hadn't been *modified* in eight days but were still being *read* by the running build. The `find` command did not know the difference between "old" in the file-system sense and "old" in the project sense. It moved the files. Exit zero. Three days later, the build broke.
+The command did what the command said it would do. *Files older than 7 days were moved to archive/.* The problem was that "older than 7 days" in `find` syntax — specifically `-mtime +7` — meant *files whose modification time was more than 7 days ago*. The friend's `find` had also descended into `.import/`, the Godot cache directory that lives alongside `builds/`. Some of those cache files hadn't been *modified* in eight days but were still being *read* by the editor every time a scene loaded. The `find` command did not know the difference between "old" in the file-system sense and "old" in the project sense. It moved the files. Exit zero. Three days later, the project wouldn't open a scene.
 
 Seth had read about this kind of failure before he typed his first `gh copilot suggest`. He had a rule for it: never run a `gh copilot suggest` output without running `gh copilot explain` on it first. The friend did not have the rule. The friend was technically fluent — could type the command, could read the syntax, had been writing bash for two years. The technical fluency was the trap. It produced the *confidence* to run the command without the *practice* of asking what the command actually did.
 
@@ -71,6 +71,18 @@ Three quick orientations.
 **This is not a bash scripting tutorial.** You are expected to know basic terminal commands (`cd`, `ls`, `mkdir`, basic Git). You are not expected to know shell scripting beyond that, and you are not expected to know `gh copilot suggest`, `gh copilot explain`, or `gh copilot ask` — Chapter 1 introduces them. If you need a bash primer, there are many; this book is not one of them.
 
 **This is not a generic AI literacy course.** Generic AI literacy treats you as a problem to manage. This book treats you as a builder to equip. The framework — *the suggest → explain → verify gate*, CLI.md, the five supervisory capacities, the dangerous middle — is the equipment. The builds you will do across the book are how the equipment lands.
+
+---
+
+## Who Seth is, and why he is the co-author
+
+Seth is the co-author of this book. He is also the student in the opening scene. The reason both of those things are true is worth a paragraph, because it is the structural reason the book exists in the shape it does.
+
+Seth is a self-taught game developer in Troy, Missouri. By the time he sat in the lab next to the friend whose `find` command quietly moved the wrong files, Seth had already been at the terminal every day for years — Git/GitHub on the game repos he ships, shell pipelines for Godot and Unity builds, Node.js tooling for the Next.js platform he runs. He has shipped *Haunt & Harvest*, a co-op horror survival game in Godot 4 he migrated system-by-system from Unreal Engine. He has shipped *Midnight Fuel*, a Roblox/Luau horror game with cinematic intro and modular networked architecture. He has shipped *Bubble Pop*, a Google Play arcade title with AdMob and the full Play Console paperwork. He runs *Zebonastic*, a Next.js platform on which he publishes weekly on horror game psychology. He is 17 years old.
+
+What this means for the book: the terminal-discipline chapters are written against the constraints of his actual work. The `.godot/imported/` caches, the `builds/android/` outputs that should never be checked in, the export presets, the kinds of accidents that happen when an `rm -rf` runs in the wrong subtree of a game project. The discipline is not theory. Seth worked it out under pressure on real projects, and the book is the structured form of what he learned.
+
+The book is written in two voices. Seth's voice, when the chapter is doing narrative work or recounting a specific terminal moment. The author's voice, when the chapter is doing framework work. The shift is signaled in the text. A discipline written only by adults about how students should behave has a certain shape. A discipline worked out by a practitioner under real deadlines, with an adult helping articulate the structure, has a different shape — and a different authority.
 
 ---
 

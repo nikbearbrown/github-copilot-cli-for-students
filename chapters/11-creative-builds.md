@@ -14,15 +14,15 @@
 
 ## Opening
 
-Seth was building a weekly-summary script.
+Seth was building a weekly dev-log generator for Zebonastic.
 
-The script read his git commits from the past week, his terminal history, and his to-do file, and produced a one-page summary in markdown. He wrote it to be shareable — a record he could review at the end of the week and send to a study group.
+The script read his git commits from the past week across the Haunt & Harvest and Midnight Fuel repos, his Zebonastic article drafts folder, and his to-do file, and produced a one-page markdown dev log. He wrote it to be publishable — a record he posts every week to the Zebonastic site for the developers and educators who read it.
 
 The CLI generated the formatting. Seth used `gh copilot suggest` to compose a `bash` script that took the inputs, organized them, and printed the result. The script worked. The output was correct. The technical implementation was right.
 
 The output had no voice.
 
-The summary was structured ("This week's commits: ..." "This week's terminal activity: ..." "This week's to-dos: ..."). The structure was reasonable. The summary read like the *average* weekly summary the CLI had seen in its training data — chipper, generic, vaguely encouraging. It was indistinguishable from a thousand other students' summaries that did not exist but that the CLI's training had implied could exist.
+The summary was structured ("This week's commits: ..." "This week's drafts: ..." "This week's to-dos: ..."). The structure was reasonable. The summary read like the *average* weekly dev log the CLI had seen in its training data — chipper, generic, vaguely encouraging. It was indistinguishable from a thousand other indie-dev logs that did not exist but that the CLI's training had implied could exist.
 
 When Seth read his summary, it did not sound like him. It sounded like the model. The model is good at the average. Seth is not the average.
 
@@ -43,7 +43,7 @@ Some terminal scripts are creative. The boundary is:
 
 Examples of creative terminal builds:
 
-- A weekly-summary script (the chapter opening).
+- A weekly dev-log generator (the chapter opening).
 - A script that generates README files for your projects.
 - A script that formats error messages for human readability.
 - A script that produces release notes from commit history.
@@ -98,9 +98,9 @@ Add a section to CLI.md for the creative-aesthetic decisions:
   "Acknowledgments" unless there's a specific person to acknowledge.
 
 ### Examples
-- A weekly summary: see `~/projects/weekly-summary/examples/2026-04-21.md`
+- A weekly dev log: see `~/projects/zebonastic/devlog/2026-04-21.md`
   for the voice and format I want.
-- A README I like the voice of: `~/projects/my-project/README.md`.
+- A README I like the voice of: `~/Projects/HauntAndHarvest/README.md`.
 ```
 
 The section grows over time, the same way the lessons-learned section grows. Each time the CLI's default output drifts from your voice, you note the drift in this section so the next prompt can reference it.
@@ -109,14 +109,14 @@ When you write a `gh copilot suggest` prompt for a creative script, paste the re
 
 ---
 
-## Worked example: the weekly summary, twice
+## Worked example: the weekly dev log, twice
 
 Same input. Same script structure. Two prompts. Different outputs.
 
 **Prompt 1 (without creative-section context):**
 
 ```
-gh copilot suggest "bash script that reads my git log from the past week and prints a weekly summary"
+gh copilot suggest "bash script that reads my git log from the past week across my game repos and prints a weekly dev log"
 ```
 
 The CLI generates a script that produces output like:
@@ -129,9 +129,9 @@ Great work this week! Here's a summary of your accomplishments:
 
 📊 COMMITS THIS WEEK: 23
 🎯 Top repositories:
-   - my-project (12 commits)
-   - class-website (8 commits)
-   - homework (3 commits)
+   - HauntAndHarvest (12 commits)
+   - MidnightFuel (8 commits)
+   - zebonastic (3 commits)
 
 Keep up the great work! 🚀
 ```
@@ -141,7 +141,7 @@ The script runs. The output is technically correct. The voice is the model's. Th
 **Prompt 2 (with creative-section context pasted):**
 
 ```
-gh copilot suggest "bash script that reads my git log from the past week and prints a weekly summary, in the voice from the Voice and aesthetic conventions section of my CLI.md: matter-of-fact, no generic encouragement, no emoji, direct second-person, specific over generic"
+gh copilot suggest "bash script that reads my git log from the past week across my game repos and prints a weekly dev log, in the voice from the Voice and aesthetic conventions section of my CLI.md: matter-of-fact, no generic encouragement, no emoji, direct second-person, specific over generic"
 ```
 
 The CLI generates a script that produces output like:
@@ -150,15 +150,25 @@ The CLI generates a script that produces output like:
 Week of 2026-05-18 — git activity
 
 23 commits across 3 repositories:
-- my-project: 12 commits, last on 2026-05-23
-- class-website: 8 commits, last on 2026-05-22
-- homework: 3 commits, last on 2026-05-19
+- HauntAndHarvest: 12 commits, last on 2026-05-23
+- MidnightFuel: 8 commits, last on 2026-05-22
+- zebonastic: 3 commits, last on 2026-05-19
 
-The my-project repo has the most activity. The largest commit
-(by lines changed) was the refactor on 2026-05-21.
+The HauntAndHarvest repo has the most activity. The largest commit
+(by lines changed) was the inventory refactor on 2026-05-21.
 ```
 
 Same CLI. Different output. The 100 words of creative-section context in the prompt are why.
+
+The output above is the dev log itself — terse, factual, written for builders. The Zebonastic articles the dev log accompanies share that register. A typical opener from Seth's published archive:
+
+> Start with a number that shouldn't be possible: 287,000. That's how many people were playing *The Elder Scrolls V: Skyrim* simultaneously at its 2011 launch peak. Fine — new release, expected. The number that's actually strange is the one that comes fourteen years later: roughly 1,400 people logged in on an average day in 2025. Not a remaster. Not a sequel. The same game, still breathing.
+
+Or another, from a piece on AI-generated music:
+
+> You have 568,707 SEC Form D filings on one end of a research pipeline. On the other end: a horror game that makes you check over your shoulder in your own apartment. These two facts are not as far apart as they seem. Both involve the same problem — signal extraction from noise.
+
+The shape repeats. A specific number. An immediate framing of what makes the number worth thinking about. A refusal to use marketing voice or to soften the analysis with generic encouragement. The CLI cannot invent this voice — it has no way to know that "287,000" and "568,707" are the right places to start, or that the second-person address ("you") is for builders rather than consumers. The CLI can be told the voice exists, named, with example files, and instructed not to overwrite it. The *Voice and aesthetic conventions* section in CLI.md is that telling.
 
 **The lesson:** the model's defaults are the model's defaults. You replace them with yours by stating yours explicitly. The discipline scales the same way as for automation builds — supply the context the model does not have.
 
@@ -196,7 +206,7 @@ A subtlety: error messages always have a human reader, even when the script's ma
 
 2. **(Analyze)** Take a script you have written (or generated) that produces human-readable output. Read three runs of the output. Identify two places where the voice does not match what you would have written. What would your version say differently?
 
-3. **(Create)** Rewrite the weekly-summary script (or an analogous creative script of your own) with the *Voice and aesthetic conventions* section pasted into the prompt. Compare the new output to the original. Was the difference what you expected?
+3. **(Create)** Rewrite the weekly dev-log script (or an analogous creative script of your own) with the *Voice and aesthetic conventions* section pasted into the prompt. Compare the new output to the original. Was the difference what you expected?
 
 ---
 

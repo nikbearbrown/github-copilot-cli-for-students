@@ -20,11 +20,11 @@ Seth was about to declare it done.
 
 Then he ran the verification pass — the one he almost skipped because the script's own report had felt convincing. He checked the file system. The three branches he had intended to clean were clean. The active branch was unchanged. The preserved-snapshot branch (caught by plausibility audit in Chapter 12) was untouched.
 
-He also checked one thing the script's report had not addressed: he ran `git status` on each of the cleaned branches by checking them out one by one. On the first cleaned branch, `git status` reported a deleted file: `.eslintrc.js`. The script had removed `.eslintrc.js` as part of cleaning the branch.
+He also checked one thing the script's report had not addressed: he ran `git status` on each of the cleaned branches by checking them out one by one. On the first cleaned branch, `git status` reported a deleted file: `export_presets.cfg`. The script had removed `export_presets.cfg` as part of cleaning the branch.
 
-That was not in the spec. The spec said to remove `node_modules/`, `dist/`, `build/`. Nothing about removing `.eslintrc.js`.
+That was not in the spec. The spec said to remove `.godot/imported/`, `.import/`, `addons/.cache/`, `builds/android/`. Nothing about removing `export_presets.cfg`.
 
-Seth investigated. The `.eslintrc.js` had been deleted because the `rm -rf` was matching against a glob pattern that the CLI had generated as `*.{js,json}` in the dist directory — but the glob had expanded across the entire branch's worktree, not just `dist/`. The `.eslintrc.js` file at the project root happened to match. The script's report did not mention it because the report only listed the *directories* it had cleaned; the auxiliary deletion was invisible in the summary.
+Seth investigated. The `export_presets.cfg` had been deleted because the `rm -rf` was matching against a glob pattern that the CLI had generated as `*.{cfg,import}` in the cache directories — but the glob had expanded across the entire branch's worktree, not just the cache paths. The `export_presets.cfg` file at the project root happened to match. The script's report did not mention it because the report only listed the *directories* it had cleaned; the auxiliary deletion was invisible in the summary.
 
 The script had passed every handoff condition Seth had written. The plausibility audit during execution had not fired. The error surfaced only in the verification pass — when Seth checked something the script had not been asked to report on.
 
@@ -40,13 +40,13 @@ The verification step has three layers, run in order.
 
 **Pass 1: mechanical verification.** Did each step complete without errors? Exit codes zero? Expected output present? Nothing in stderr that looks like a problem? This pass is the one most students stop at. It is the necessary first check; it is not sufficient.
 
-**Pass 2: scope verification.** Did the build touch the right files and *only* the right files? Are the counts what you expected? Are the files identified by name (not just by count) the ones you intended? This is the pass that would have caught Seth's `.eslintrc.js` deletion — by checking `git status` on each cleaned branch rather than trusting the script's own report.
+**Pass 2: scope verification.** Did the build touch the right files and *only* the right files? Are the counts what you expected? Are the files identified by name (not just by count) the ones you intended? This is the pass that would have caught Seth's `export_presets.cfg` deletion — by checking `git status` on each cleaned branch rather than trusting the script's own report.
 
 The mechanical: how to do Pass 2. For each file-modifying step, you can usually verify scope by running a `find` or `ls` or `git status` *after* the step against the directory the step touched. The output of the post-hoc check should match your expectation; surprises are caught here.
 
 **Pass 3: intent verification.** Does the final state of the system match what the *formulation* (Chapter 7) said you wanted? Not what the spec said, not what the steps did, but what the original problem formulation specified as the goal.
 
-The repository-hygiene build's formulation said: "Remove generated artifacts (`node_modules/`, `dist/`, `build/`) from non-active branches, preserving the active branch's state." The intent-verification check: are *generated artifacts* (defined: `node_modules/`, `dist/`, `build/` — explicit list) removed from non-active branches? Is the active branch state preserved? The answer should be yes on both. The `.eslintrc.js` deletion fails the intent-verification because `.eslintrc.js` is not in the generated-artifacts list.
+The repository-hygiene build's formulation said: "Remove generated artifacts (`.godot/imported/`, `.import/`, `addons/.cache/`, `builds/android/`) from non-active branches, preserving the active branch's state." The intent-verification check: are *generated artifacts* (defined: the four directories — explicit list) removed from non-active branches? Is the active branch state preserved? The answer should be yes on both. The `export_presets.cfg` deletion fails the intent-verification because `export_presets.cfg` is not in the generated-artifacts list — it is configuration.
 
 The three passes are *cumulative*. Pass 2 catches things Pass 1 missed. Pass 3 catches things Pass 2 missed. Stop at Pass 1 and you ship the build that passed `exit 0` and is wrong.
 
@@ -81,32 +81,32 @@ Seth's verification of the build that opened the chapter.
 **Pass 1 (mechanical).** Every step exited zero. The summary script printed the expected output (branches cleaned, space recovered). No errors in stderr. **PASS.**
 
 **Pass 2 (scope).** Seth checks each cleaned branch by checking it out and running `git status`:
-- Branch A: cleaned. `git status` shows untracked `.eslintrc.js`. UNEXPECTED.
+- Branch A: cleaned. `git status` shows untracked `export_presets.cfg`. UNEXPECTED.
 - Branch B: cleaned. `git status` clean. Expected.
-- Branch C: cleaned. `git status` shows untracked `.eslintrc.js`. UNEXPECTED.
+- Branch C: cleaned. `git status` shows untracked `export_presets.cfg`. UNEXPECTED.
 - The active branch: `git status` clean. Expected.
 - The preserved-snapshot branch: `git status` clean. Expected.
 
 **Pass 2 outcome: PARTIAL FAIL.** Two branches have unexpected deletions.
 
-**Pass 3 (intent).** The formulation specified removal of generated artifacts. `.eslintrc.js` is not a generated artifact; it is configuration. The deletion violates the formulation's intent.
+**Pass 3 (intent).** The formulation specified removal of generated artifacts. `export_presets.cfg` is not a generated artifact; it is configuration (Godot's export targets and signing config live there). The deletion violates the formulation's intent.
 
 **Pass 3 outcome: FAIL.**
 
 The build is not done. The fix:
 
-1. Restore the deleted `.eslintrc.js` files on Branches A and C from the most recent commit (`git checkout HEAD -- .eslintrc.js`).
-2. Update the script's spec to scope the `rm` to *directory paths under `dist/`*, not glob-by-extension across the branch.
+1. Restore the deleted `export_presets.cfg` files on Branches A and C from the most recent commit (`git checkout HEAD -- export_presets.cfg`).
+2. Update the script's spec to scope the `rm` to *directory paths under the cache directories*, not glob-by-extension across the branch.
 3. Re-run the script on the affected branches with the corrected spec.
 4. Re-run Pass 2 and Pass 3 to confirm.
 
 The post-build document, after the fix:
 
-> **What I built.** A bash script that cleans generated artifacts (`node_modules/`, `dist/`, `build/`) from non-active branches of a git repo while preserving the active branch's state.
+> **What I built.** A bash script that cleans generated artifacts (`.godot/imported/`, `.import/`, `addons/.cache/`, `builds/android/`) from non-active branches of a Godot git repo while preserving the active branch's state.
 >
 > **What I delegated.** The `git for-each-ref` survey logic, the `git checkout` + `rm -rf` sequence, the disk-space arithmetic. Pattern-completion work where the CLI is faster than I am.
 >
-> **What I kept.** The decision about which branches to skip (the preserved-snapshot was caught by plausibility audit). The formulation of "generated artifacts" (which the first run got wrong by interpreting it too broadly). The verification pass that caught the `.eslintrc.js` deletion. The supervisory work in general.
+> **What I kept.** The decision about which branches to skip (the preserved-snapshot was caught by plausibility audit). The formulation of "generated artifacts" (which the first run got wrong by interpreting it too broadly). The verification pass that caught the `export_presets.cfg` deletion. The supervisory work in general.
 >
 > **What I learned.** That globs in `rm -rf` can match across a branch's worktree more broadly than I intended; that the CLI's interpretation of "generated artifacts" defaults to file extensions rather than directory paths; that the verification pass needs to check `git status` per branch, not just trust the script's own report. CLI.md updated with the lesson about glob scoping.
 >

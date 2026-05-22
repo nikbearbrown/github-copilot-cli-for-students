@@ -73,18 +73,19 @@ The point is to *learn from the interrogation* — to add to your knowledge befo
 
 For a student-scale shell project: a list with steps, each step's purpose, and each step's handoff condition. The plan can fit on one page.
 
-Worked example: the plan for a "repository hygiene script" that cleans up generated artifacts (`node_modules/`, `dist/`, `build/`) from non-active branches of a project, preserving the active branch's state.
+Worked example: the plan for a "repository hygiene script" for a Godot project that cleans up generated artifacts (`.godot/imported/`, `.import/`, `addons/.cache/`, and old `builds/android/` outputs) from non-active branches, preserving the active branch's state.
 
 ```markdown
-# PLAN — Repository Hygiene Script
+# PLAN — Repository Hygiene Script (Godot project)
 
 ## Problem formulation
-What does it do? Remove generated artifacts (`node_modules/`, `dist/`, `build/`)
-from non-active branches of a git project, freeing disk space without affecting
-the currently-checked-out branch.
+What does it do? Remove generated artifacts (`.godot/imported/`, `.import/`,
+`addons/.cache/`, `builds/android/`) from non-active branches of a Godot git
+project, freeing disk space without affecting the currently-checked-out branch.
 What does it touch? The non-checked-out branches' worktrees. Reads git state.
 What does it never touch? The currently checked-out branch. The `.git/objects`
-directory. Anything outside the project root.
+directory. Project source (`.gd`, `.tscn`, `.tres`). Anything outside the
+project root.
 
 ## Steps
 
@@ -102,8 +103,12 @@ directory. Anything outside the project root.
    - Tool: `gh copilot suggest` for the `git checkout` + `rm -rf` sequence.
    - SUBTLETY: `git checkout` will *fail* if there are uncommitted changes in
      the currently-checked-out branch. Plan must `git stash` before switching.
-   - Handoff: each candidate branch has had `node_modules/`, `dist/`, `build/`
-     removed. The previously-active branch is restored (checkout back, stash pop).
+   - SUBTLETY: never delete `.godot/imported/` on the active branch — Godot
+     rebuilds it on next open, but doing it mid-session corrupts the editor's
+     in-memory state. Step 4 confirms the active branch was not touched.
+   - Handoff: each candidate branch has had `.godot/imported/`, `.import/`,
+     `addons/.cache/`, and `builds/android/` removed. The previously-active
+     branch is restored (checkout back, stash pop).
 
 4. **Verify the active branch is unchanged.**
    - Tool: `git status` + manual check.

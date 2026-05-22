@@ -104,38 +104,38 @@ Chapter 9 owns handoff conditions as its full chapter. For now: when you compose
 
 ---
 
-## Worked example: log archive, with and without the gate
+## Worked example: build-artifact archive, with and without the gate
 
 Same task as Chapter 0. Same starting prompt. Two runs.
 
 **Run without the gate.** Seth's friend (from Chapter 0):
 
 ```
-$ gh copilot suggest "archive log files older than 7 days"
-# CLI returns: find . -name '*.log' -mtime +7 -exec mv {} archive/ \;
-$ find . -name '*.log' -mtime +7 -exec mv {} archive/ \;
-$ # exit 0; 47 files moved; three days later build broke
+$ gh copilot suggest "archive build artifacts older than 7 days"
+# CLI returns: find . -mtime +7 -exec mv {} archive/ \;
+$ find . -mtime +7 -exec mv {} archive/ \;
+$ # exit 0; 47 files moved; three days later Godot would not import a scene
 ```
 
 **Run with the gate.** Seth:
 
 ```
-$ gh copilot suggest "archive log files in ~/projects/my-project/logs/ that are older than 7 days and not currently held open"
+$ gh copilot suggest "archive build artifacts in ~/Projects/HauntAndHarvest/builds/ that are older than 7 days and not currently held open by the Godot editor"
 # CLI returns a two-line pipeline using lsof and grep
-$ gh copilot explain "lsof +D ~/projects/my-project/logs | awk 'NR>1 {print $NF}' | sort -u"
+$ gh copilot explain "lsof +D ~/Projects/HauntAndHarvest | awk 'NR>1 {print $NF}' | sort -u"
 # CLI explains lsof, awk, and the file list
-$ gh copilot explain "find ~/projects/my-project/logs -name '*.log' | grep -v -F -f /tmp/active.txt"
+$ gh copilot explain "find ~/Projects/HauntAndHarvest/builds -mtime +7 | grep -v -F -f /tmp/active.txt"
 # CLI explains grep -v -F -f
-$ lsof +D ~/projects/my-project/logs | awk 'NR>1 {print $NF}' | sort -u > /tmp/active.txt
-$ find ~/projects/my-project/logs -name '*.log' | grep -v -F -f /tmp/active.txt
+$ lsof +D ~/Projects/HauntAndHarvest | awk 'NR>1 {print $NF}' | sort -u > /tmp/active.txt
+$ find ~/Projects/HauntAndHarvest/builds -mtime +7 | grep -v -F -f /tmp/active.txt
 # 31 candidate files printed; Seth reviews
-$ find ~/projects/my-project/logs -name '*.log' | grep -v -F -f /tmp/active.txt | xargs -I {} echo mv {} archive/
+$ find ~/Projects/HauntAndHarvest/builds -mtime +7 | grep -v -F -f /tmp/active.txt | xargs -I {} echo mv {} archive/
 # dry-run; 31 echo'd; Seth confirms paths
-$ find ~/projects/my-project/logs -name '*.log' | grep -v -F -f /tmp/active.txt | xargs -I {} mv {} archive/
-# real run; exit 0; 31 files moved; no active logs touched
+$ find ~/Projects/HauntAndHarvest/builds -mtime +7 | grep -v -F -f /tmp/active.txt | xargs -I {} mv {} archive/
+# real run; exit 0; 31 files moved; no .import/ cache files touched
 ```
 
-Same CLI. Same starting prompt. The difference is the four gate steps — formulate (Seth specified the directory and the held-open condition), suggest, explain (twice, on the two pipelines), verify (dry-run with `echo` before the real `mv`). The unattended run took thirty seconds; the conducted run took maybe four minutes. Three days later, the unattended build was broken and the conducted one was not.
+Same CLI. Same starting prompt. The difference is the four gate steps — formulate (Seth specified the directory and the held-open condition), suggest, explain (twice, on the two pipelines), verify (dry-run with `echo` before the real `mv`). The unattended run took thirty seconds; the conducted run took maybe four minutes. Three days later, the unattended project would not import a scene; the conducted one opened cleanly.
 
 The math is dramatically in favor of the four minutes.
 

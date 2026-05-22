@@ -1,0 +1,13 @@
+{
+  "name": "github-copilot-cli-for-students",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "GitHub Copilot CLI for Students",
+  "scripts": {
+    "svg-to-png": "node SCRIPTS/svg-to-png.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0",
+    "glob": "^10.0.0"
+  }
+}

@@ -42,7 +42,8 @@ The discipline has a name. It is called **conducting**. The student who *conduct
 
 That is the book in one paragraph. The rest of the book is how.
 
-<!-- → [DIAGRAM: Seth's arc from observer to practitioner — two-point timeline showing "watches friends" → "builds the discipline". Minimal. Editorial style. No color.] -->
+![Seth's arc from observer to practitioner ](images/01-introduction-cautious-builder-fig-01.png)
+*Figure 1.1 — Seth's arc from observer to practitioner *
 
 ---
 
@@ -189,3 +190,21 @@ The feeling Seth had watching his friend is real. Chapter 1 gives it a name — 
 ---
 
 [^1]: Wiener, N. *The Human Use of Human Beings: Cybernetics and Society*. Houghton Mifflin, 1950; revised 1954. The 1954 edition is the standard citation.
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 1.1 — Seth's arc from observer to practitioner 
+
+Create a standalone D3 v7 HTML file for Figure Seth's arc from observer to practitioner . Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: Seth's arc from observer to practitioner — two-point timeline showing "watches friends" → "builds the discipline". Minimal. Editorial style. No color.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/01-introduction-cautious-builder-fig-01.html`

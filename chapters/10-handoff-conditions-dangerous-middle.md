@@ -26,7 +26,8 @@ This is the **dangerous middle**: the case where the `gh copilot explain` is acc
 
 This chapter is the dangerous middle, named.
 
-<!-- → [DIAGRAM: The handoff condition as a gate between build steps. Step N → [Handoff condition check: specific, testable, not "exit 0"] → Step N+1. If check fails: revert and respecify.] -->
+![The handoff condition as a gate between build](images/10-handoff-conditions-dangerous-middle-fig-01.png)
+*Figure 10.1 — The handoff condition as a gate between build*
 
 ---
 
@@ -98,7 +99,9 @@ A taxonomy worth knowing.
 
 The CLI does not warn about these patterns when generating commands. The `gh copilot explain` mentions what the command does, not what it might do to your specific filesystem. The handoff conditions you write are the protection.
 
-<!-- → [TABLE: Strong vs. weak handoff conditions for terminal tasks. Five examples. Left: weak (exit 0, no errors). Right: strong (specific count, specific files, specific state).] -->
+| Item | Meaning |
+| --- | --- |
+| Strong vs. weak handoff conditions for terminal tasks. Five examples. Left: weak (exit 0, no errors). Right: strong (specific count, specific files, specific state). | The pattern becomes easy to misuse or overlook. |
 
 ---
 
@@ -176,3 +179,21 @@ You have the full conducting discipline for terminal builds. Chapter 10 applies 
 
 [^1]: OpenAI engineers, "How OpenAI Engineers use Codex to Tackle Big Projects with Rigor" (forum.openai.com, December 4, 2025). The rule is for Codex specifically; the same logic applies to `gh copilot suggest`.
 [^2]: Hopper, G. *Various lectures and interviews*, 1980s. The "we've always done it this way" phrase is quoted across her recorded talks and is widely attributed.
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 10.1 — The handoff condition as a gate between build
+
+Create a standalone D3 v7 HTML file for Figure The handoff condition as a gate between build. Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: The handoff condition as a gate between build steps. Step N → [Handoff condition check: specific, testable, not "exit 0"] → Step N+1. If check fails: revert and respecify.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/10-handoff-conditions-dangerous-middle-fig-01.html`

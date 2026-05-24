@@ -20,7 +20,9 @@ This pattern has a name. It is called **silent failure**, and it is the central 
 
 The chapter is the empirical foundation for everything else in the book. If you walk away from this chapter convinced that silent failure is real, measurable, and the specific failure mode the discipline catches, the rest of the book has a foundation to stand on. If not, the rest reads as opinion.
 
-<!-- → [TABLE: Silent failure taxonomy — four rows. Row 1: visible failure (non-zero exit, error message). Row 2: silent wrong scope (processes more than intended). Row 3: silent wrong target (right operation, wrong files). Row 4: silent wrong timing (runs at wrong moment in pipeline). Each row: what it looks like, what it costs, how to catch it.] -->
+| Item | Meaning |
+| --- | --- |
+| what it looks like, what it costs, how to catch it. | A concrete checkpoint for applying the chapter concept. |
 
 ---
 

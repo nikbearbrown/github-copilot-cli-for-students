@@ -24,7 +24,8 @@ The conductor's job is not to play. The conductor's job is to bridge the meaning
 
 The discipline this chapter teaches is conducting. The operational mechanism is a three-step gate: **suggest → explain → verify**. No command runs without going through it. This is the most important rule in the book. Everything else is a consequence.
 
-<!-- → [DIAGRAM: The suggest → explain → verify gate. Human: formulate task. gh copilot suggest: generate command. gh copilot explain: explain it. Human: evaluate explanation against intent. Verify in sandbox. Run. No command runs without explanation reviewed. Editorial style.] -->
+![The suggest → explain → verify gate](images/05-conducting-not-running-fig-01.png)
+*Figure 5.1 — The suggest → explain → verify gate*
 
 ---
 
@@ -230,3 +231,21 @@ You have the gate. Chapter 5 names the five things you do that the CLI cannot �
 ---
 
 [^1]: Simon, H. A. *The Sciences of the Artificial*. MIT Press, 3rd ed., 1996. The earlier *Models of Man* (Wiley, 1957) is also a foundational source.
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 5.1 — The suggest → explain → verify gate
+
+Create a standalone D3 v7 HTML file for Figure The suggest → explain → verify gate. Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: The suggest → explain → verify gate. Human: formulate task. gh copilot suggest: generate command. gh copilot explain: explain it. Human: evaluate explanation against intent. Verify in sandbox. Run. No command runs without explanation reviewed. Editorial style.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/05-conducting-not-running-fig-01.html`

@@ -36,7 +36,9 @@ The CLI had also no idea what Seth was going to *do* with the answer. If Seth wa
 
 That gap — between the command being *syntactically perfect* and the command being *the right command for this task in this context* — is the chapter.
 
-<!-- → [TABLE: Division of labor — two columns: CLI does / Human does. CLI: pattern completion, syntax generation, flag lookup, command structure. Human: scope definition, target specification, exclusion decisions, intent verification, consequence assessment.] -->
+| CLI does | Human does |
+| --- | --- |
+| Division of labor | two |
 
 ---
 
@@ -96,7 +98,8 @@ The asymmetry has an operational implication. Your time at the terminal during A
 
 This reframes what good terminal practice looks like. The student who tries to keep up with the CLI's generation pace by skimping on verification is operating against the asymmetry. The student who slows down at the verification step — running explain, checking the scope, predicting the consequence — is using their scarce resource where it matters.
 
-<!-- → [DIAGRAM: The solve-verify asymmetry — timeline. Codex's solve speed increasing over time. Human verification capacity stable. The gap widens. The human's job: not to solve faster but to verify better.] -->
+![The solve-verify asymmetry ](images/03-pattern-vs-scope-judgment-fig-01.png)
+*Figure 3.1 — The solve-verify asymmetry *
 
 ---
 
@@ -244,3 +247,21 @@ You can name the capacities. Chapter 3 explains why school is not teaching them 
 ---
 
 [^1]: Gilbreth, L. M. *The Psychology of Management*. Sturgis & Walton, 1914. See also Gilbreth and Gilbreth, *Applied Motion Study* (1917) and *Time Study and Motion Study as Fundamental Factors in Planning and Control* (1916).
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 3.1 — The solve-verify asymmetry 
+
+Create a standalone D3 v7 HTML file for Figure The solve-verify asymmetry . Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: The solve-verify asymmetry — timeline. Codex's solve speed increasing over time. Human verification capacity stable. The gap widens. The human's job: not to solve faster but to verify better.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/03-pattern-vs-scope-judgment-fig-01.html`

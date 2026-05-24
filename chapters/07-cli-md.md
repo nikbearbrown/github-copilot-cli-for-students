@@ -24,7 +24,8 @@ The file is **CLI.md**. It is a markdown file you maintain in your project direc
 
 CLI.md has one important property that distinguishes it from the equivalent files in other agentic tools (AGENTS.md for Codex, CLAUDE.md for Claude Code): **CLI.md is not automatically loaded by `gh copilot`.** You paste from it manually into each session's prompts. The lack of auto-injection is, for this book, a *feature* — it forces you to exercise tool-orchestration (Chapter 5's TO) on every invocation. You decide what context to give the CLI each time. The CLI does not auto-default to something you did not consciously specify.
 
-<!-- → [DIAGRAM: CLI.md in the workflow — created before build, consulted before each gh copilot suggest invocation, updated after each session. Contrast: without CLI.md (CLI guesses) vs. with CLI.md context pasted (CLI knows the project). Editorial style.] -->
+![CLI](images/07-cli-md-fig-01.png)
+*Figure 7.1 — CLI*
 
 ---
 
@@ -182,7 +183,9 @@ The boundary: if you find yourself adding something to CLI.md and your second th
 
 A test: if CLI.md grows past 200 lines, you have been putting agenda-shaped things into it. Prune.
 
-<!-- → [TABLE: CLI.md include/exclude — two columns. Include: environment facts, project-specific conventions, known dangerous patterns, lessons from failures. Exclude: general shell knowledge the CLI already has, constantly changing state, personal notes unrelated to the project.] -->
+| Item | Meaning |
+| --- | --- |
+| CLI.md include | exclude |
 
 ---
 
@@ -243,3 +246,21 @@ You have CLI.md. The CLI knows your project (when you paste). Chapter 7 teaches 
 ---
 
 [^1]: Knuth, D. E. "Literate Programming." *The Computer Journal* 27, no. 2 (1984): 97–111.
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 7.1 — CLI
+
+Create a standalone D3 v7 HTML file for Figure CLI. Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: CLI.md in the workflow — created before build, consulted before each gh copilot suggest invocation, updated after each session. Contrast: without CLI.md (CLI guesses) vs. with CLI.md context pasted (CLI knows the project). Editorial style.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/07-cli-md-fig-01.html`

@@ -24,7 +24,8 @@ Then he caught it: this was the discipline working. He was not avoiding the buil
 
 This chapter is what the hour looks like.
 
-<!-- → [DIAGRAM: The planning sequence — gh copilot ask interrogation → problem formulation → CLI.md populated → execution plan → review and approve → gh copilot suggest invocations. Phase gates labeled.] -->
+![The planning sequence ](images/12-planning-first-build-fig-01.png)
+*Figure 12.1 — The planning sequence *
 
 ---
 
@@ -242,3 +243,21 @@ The plan is complete. The CLI.md is ready. The formulation has passed the one-se
 ---
 
 [^1]: Alexander, C. *Notes on the Synthesis of Form*. Harvard University Press, 1964. See also *A Pattern Language* (Oxford, 1977) and *The Timeless Way of Building* (Oxford, 1979).
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 12.1 — The planning sequence 
+
+Create a standalone D3 v7 HTML file for Figure The planning sequence . Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: The planning sequence — gh copilot ask interrogation → problem formulation → CLI.md populated → execution plan → review and approve → gh copilot suggest invocations. Phase gates labeled.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/12-planning-first-build-fig-01.html`

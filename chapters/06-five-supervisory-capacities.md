@@ -22,7 +22,8 @@ He could not point to a specific thing wrong with the command. The syntax was ri
 
 The feeling has a name. It is called **plausibility auditing** — the supervisory capacity of *hearing the wrong note before verification catches it*. The capacity is one of five that this chapter names. Together, the five capacities are the work the conducting discipline keeps yours.
 
-<!-- → [DIAGRAM: Five supervisory capacities as a five-column layout. Each: abbreviation, plain name, terminal-specific one-sentence definition.] -->
+![Five supervisory capacities as a five-column layout](images/06-five-supervisory-capacities-fig-01.png)
+*Figure 6.1 — Five supervisory capacities as a five-column layout*
 
 ---
 
@@ -238,3 +239,21 @@ You have the capacities. Chapter 6 introduces CLI.md — the file that makes the
 ---
 
 [^1]: Engelbart, D. C. *Augmenting Human Intellect: A Conceptual Framework*. SRI Project No. 3578 (Air Force Office of Scientific Research), 1962. Available via the Doug Engelbart Institute.
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 6.1 — Five supervisory capacities as a five-column layout
+
+Create a standalone D3 v7 HTML file for Figure Five supervisory capacities as a five-column layout. Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: Five supervisory capacities as a five-column layout. Each: abbreviation, plain name, terminal-specific one-sentence definition.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/06-five-supervisory-capacities-fig-01.html`

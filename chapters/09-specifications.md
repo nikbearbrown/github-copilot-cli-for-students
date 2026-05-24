@@ -34,7 +34,9 @@ Same task, two prompts:
 
 The CLI's output for the request is generic. The CLI's output for the specification fits the project. Same CLI. The five elements are the difference.
 
-<!-- → [TABLE: Prompt vs. specification — two columns, five rows. Each row: one element. Left: weak prompt version. Right: specification version. Applied to terminal tasks.] -->
+| Item | Meaning |
+| --- | --- |
+| one element. Left: weak prompt version. Right: specification version. Applied to terminal tasks. | A concrete checkpoint for applying the chapter concept. |
 
 ---
 

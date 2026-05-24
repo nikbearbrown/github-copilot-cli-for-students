@@ -30,7 +30,8 @@ The script had passed every handoff condition Seth had written. The plausibility
 
 This is what verification is for. The condition you did not think to check at the per-step level surfaces at the end. The build is not done when the last step's handoff passes. The build is done when the verification pass confirms the *final state of the system* matches what the formulation said it would.
 
-<!-- → [DIAGRAM: The verification sequence — three passes. Pass 1: mechanical verification (exit 0, expected output). Pass 2: scope verification (right files, right directories, right count). Pass 3: intent verification (does the result match what I said I needed). Binary result at each.] -->
+![The verification sequence ](images/14-verification-fig-01.png)
+*Figure 14.1 — The verification sequence *
 
 ---
 
@@ -185,3 +186,21 @@ You have the discipline. Chapter 14 hands you the build.
 ---
 
 [^1]: Liskov, B. and Wing, J. M. "A Behavioral Notion of Subtyping." *ACM Transactions on Programming Languages and Systems* 16, no. 6 (1994): 1811–1841.
+
+## Prompts
+
+Use these prompts with Claude to generate interactive D3 v7 versions of the
+figures in this chapter. Each produces a standalone HTML file you can open
+in a browser and modify freely.
+
+**Prerequisites:** Load `brutalist/CLAUDE.md` and `brutalist/DESIGN.md` into
+your Claude project context before using these prompts. They define the stack,
+naming conventions, color system, and typography the figures use.
+
+---
+
+### Figure 14.1 — The verification sequence 
+
+Create a standalone D3 v7 HTML file for Figure The verification sequence . Use the CDN https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js, inline CSS, ResizeObserver redraw, SVG role="img", aria-labelledby, title, and desc. Build the figure from this structural brief: The verification sequence — three passes. Pass 1: mechanical verification (exit 0, expected output). Pass 2: scope verification (right files, right directories, right count). Pass 3: intent verification (does the result match what I said I needed). Binary result at each.. Use the described data shape and labels; when exact values are not supplied, use plausible illustrative values that preserve the relationships in the brief. Use a zero baseline for bars or areas, direct labels where possible, and annotations named in the brief. Use only DESIGN.md color variables and the required serif/mono font split.
+
+> Reference implementation: `d3/14-verification-fig-01.html`

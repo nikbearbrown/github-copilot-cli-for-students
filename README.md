@@ -2,39 +2,40 @@
 
 **Author:** Nik Bear Brown  
 **Publisher:** Bear Brown, LLC  
+**Copyright:** Copyright © 2026 Nik Bear Brown. All rights reserved.  
 **Edition:** 2026
 
-## Overview
+## Summary
 
-The first sign of trouble is usually not failure. It is fluency. The draft looks clean. The answer sounds reasonable. The chart has labels. The code runs. The plan has phases. The explanation has the rhythm of expertise. Nothing in the surface announces that a human still has work to do. This book is about the gap between a polished artifact and a trustworthy one. The central argument of **GitHub Copilot CLI for Students** is that readers need a working method for the part of the work that cannot be...
+*GitHub Copilot CLI for Students* is a structured textbook for readers who need a clear path through the subject rather than a loose collection of explanations. It begins with Chapter 0 — Introduction: The Cautious Builder, moves through 15 core chapters, and ends with Chapter 14 — Your First Full Build: From Problem to Verified Output.
+
+AI matters to *GitHub Copilot CLI for Students* because the modern textbook is no longer only a static container. It is also part of a learning system: searchable, remixable, explainable, and increasingly connected to tools such as Medhavy. For Bear Brown books, the relevant question is not whether AI can replace the learner or the teacher. It cannot. The useful question is what AI can make easier to inspect: definitions, worked examples, misconceptions, practice sequences, alternate explanations, and the structure of an argument. This book treats AI as infrastructure for practical AI-assisted authorship, analysis, and production. The chapters should still stand on their own as readable prose, but they are also designed to be legible to an intelligent textbook system.
 
 ## Table of Contents
 
-- [Front Matter](chapters/00-frontmatter.md)
-- [Introduction](chapters/00-introduction.md)
-- [Chapter 1 — Introduction: The Cautious Builder](chapters/01-introduction-cautious-builder.md)
-- [Chapter 2 — The Silent Failure: What's Actually Happening](chapters/02-silent-failure.md)
-- [Chapter 3 — What You're Actually Good At (And What `gh copilot suggest` Is Better At)](chapters/03-pattern-vs-scope-judgment.md)
-- [Chapter 4 — The Terminal Gap: Why You're On Your Own](chapters/04-terminal-gap.md)
-- [Chapter 5 — Conducting, Not Running: The Core Idea](chapters/05-conducting-not-running.md)
-- [Chapter 6 — The Five Supervisory Capacities](chapters/06-five-supervisory-capacities.md)
-- [Chapter 7 — CLI.md: Your Terminal Constitution](chapters/07-cli-md.md)
-- [Chapter 8 — Problem Formulation: The Mission Before the Command](chapters/08-problem-formulation.md)
-- [Chapter 9 — Writing `gh copilot suggest` Prompts That Are Specifications](chapters/09-specifications.md)
-- [Chapter 10 — Handoff Conditions and the Dangerous Middle](chapters/10-handoff-conditions-dangerous-middle.md)
-- [Chapter 11 — When the Build Is Creative: Scripts with Aesthetic Choices](chapters/11-creative-builds.md)
-- [Chapter 12 — Planning Your First Conducted Build](chapters/12-planning-first-build.md)
-- [Chapter 13 — Running the Build: CLI Tasks and Human Tasks](chapters/13-running-the-build.md)
-- [Chapter 14 — Verification: How You Know It Works](chapters/14-verification.md)
-- [Chapter 15 — Your First Full Build: From Problem to Verified Output](chapters/15-first-full-build.md)
-- [Back Matter](chapters/99-back-matter.md)
+- **Chapter 1: Chapter 0 — Introduction: The Cautious Builder.** > Meet Seth. He noticed something his friends didn't — that exit 0 is not the same as correct. Seth was sitting next to a friend in the lab. The friend was on a Mac with the terminal open, sitting inside a...
+- **Chapter 2: Chapter 1 — The Silent Failure: What's Actually Happening.** > The most dangerous terminal failure is the one that doesn't look like a failure at all. In the introduction, Seth watched a friend run a `find -mtime` command that moved files the friend did not intend to move. The command exited...
+- **Chapter 3: Chapter 2 — What You're Actually Good At (And What `gh copilot suggest` Is Better At).** > Pattern completion is the CLI's domain. Scope judgment is yours. Knowing which is which is the whole game. Seth needed to find large files on his laptop. The disk was full and he wanted to know what was taking up space....
+- **Chapter 4: Chapter 3 — The Terminal Gap: Why You're On Your Own.** > Your teachers are teaching you to code. Nobody is teaching you to conduct the terminal. That gap is exactly where AI is most dangerous. Open your AP Computer Science syllabus. Find the unit on shell scripting. Or on Git beyond `commit`...
+- **Chapter 5: Chapter 4 — Conducting, Not Running: The Core Idea.** > Using `gh copilot suggest` as a conductor. The CLI generates the command. You decide whether it runs. Seth thinks of `gh copilot suggest` as an orchestra. The orchestra is excellent. They have read more shell than he ever will. They can...
+- **Chapter 6: Chapter 5 — The Five Supervisory Capacities.** > These are the five things you do that `gh copilot suggest` cannot. Name them. Practice them. Never delegate them. Seth was mid-build on a Git workflow script. The CLI had generated a `git filter-repo` invocation to remove a leaked API key...
+- **Chapter 7: Chapter 6 — CLI.md: Your Terminal Constitution.** > CLI.md is the file you maintain and paste from. It is the difference between a `gh copilot suggest` session that knows your project and one that guesses. Seth opens his second `gh copilot suggest` session on the same project. The CLI...
+- **Chapter 8: Chapter 7 — Problem Formulation: The Mission Before the Command.** > The most expensive mistake in a terminal build happens before the first `gh copilot suggest` invocation. Formulate the problem first. Seth set out to "back up his side projects." He spent twenty minutes composing a `tar` command with `gh copilot suggest`....
+- **Chapter 9: Chapter 8 — Writing `gh copilot suggest` Prompts That Are Specifications.** > "Archive log files" is not a prompt. A prompt names the files, the destination, the exclusions, and what must not be touched. The chapter is short. The discipline is one paragraph; the rest is the practice. You have a problem formulation...
+- **Chapter 10: Chapter 9 — Handoff Conditions and the Dangerous Middle.** > Not "it ran without errors." A specific, testable condition that must be true before the next step begins — because the terminal's silent failure mode is the most dangerous one. Seth approved a `gh copilot suggest` output. The explain step had...
+- **Chapter 11: Chapter 10 — When the Build Is Creative: Scripts with Aesthetic Choices.** > The terminal is not just for automation. When your script has aesthetic choices — output format, naming conventions, interaction design — the creative judgment stays yours. Seth was building a weekly dev-log generator for Zebonastic. The script read his git commits...
+- **Chapter 12: Chapter 11 — Planning Your First Conducted Build.** > Before `gh copilot suggest` runs a single command, you know exactly what you are building, why, and which steps belong to you. Seth was planning his first fully conducted build. He had a `gh copilot ask` open on one side of...
+- **Chapter 13: Chapter 12 — Running the Build: CLI Tasks and Human Tasks.** > The plan is approved. Now you execute it — one command at a time, with the suggest → explain → verify gate applied at every step. Seth's repository hygiene build, Phase 1. The plan is open on one side. The terminal...
+- **Chapter 14: Chapter 13 — Verification: How You Know It Works.** > The build is done when it passes the handoff conditions — not when `gh copilot suggest` says it's done, not when it exits 0. Seth's repository-hygiene build had finished its last step. The summary printed. The script reported having cleaned three...
+- **Chapter 15: Chapter 14 — Your First Full Build: From Problem to Verified Output.** > You have the discipline. Here is the project. Conduct it. Not Seth's build. Yours. The chapter gives you the project brief, the tools, and the sequence. Everything else is your decision. By the end of the chapter, you will have shipped...
 
-## Copyright and License
+## Files
 
-Copyright © 2026 Nik Bear Brown. All rights reserved.
+- `chapters/00-frontmatter.md` — title page, copyright, dedication, and preface
+- `chapters/00-introduction.md` — roadmap and book-level AI note
+- `chapters/99-back-matter.md` — acknowledgments, author note, references placeholder, and Medhavy note
+- `LICENSE.md` — rights and reuse terms
 
-See [LICENSE.md](LICENSE.md) for permissions and restrictions.
+## Medhavy
 
-## Medhavy / Medhavi Integration
-
-This book is intended for Kindle, online reading, and integration with Medhavy, an AI-powered intelligent textbook system. The static manuscript provides the durable text; Medhavy can provide adaptive practice, glossary support, study paths, and feedback loops.
+This book is prepared for Kindle, online publication, and integration with Medhavy: https://www.medhavy.com/

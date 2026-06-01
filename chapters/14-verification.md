@@ -177,6 +177,10 @@ I expect the difference to be substantial because Pass 3 (intent verification) i
 
 🕰️ **Barbara Liskov** (born 1939) — computer scientist whose work on behavioral subtyping and formal specification formalized the principle that *"correct" must be defined before it can be verified*. The Liskov Substitution Principle, articulated with Jeannette Wing in 1994, made the connection precise: a program's correctness is a property of its *specification*, not just of its execution.[^1] The chapter's three-pass verification is Liskov's principle applied to terminal builds. Pass 1 (mechanical) checks execution. Pass 2 (scope) checks against the spec. Pass 3 (intent) checks against the formulation. The hierarchy — execution → specification → intent — is the hierarchy Liskov's framework formalizes for software more broadly. The post-build learning document, in turn, is the practitioner's record of where the hierarchy held and where it did not, which is the cognitive event that makes the next build's hierarchy tighter.
 
+![Barbara Liskov](../images/barbara-liskov-1vp.png)
+
+*Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
+
 ---
 
 ## Bridge

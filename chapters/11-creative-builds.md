@@ -232,6 +232,10 @@ The chapter operates on the observation — anecdotal but consistent — that th
 
 🕰️ **Sol LeWitt** (1928–2007) — American conceptual artist whose *Paragraphs on Conceptual Art* (1967) argued that *the idea is the work* — that the person who holds the intent and writes the instruction is the author, regardless of who executes.[^1] LeWitt's wall drawings were instructions: a set of constraints and operations that anyone competent could execute. The execution varied; the work was the same, because the *concept* was the work. The instructions were specific enough that the executor's voice did not drown the artist's; LeWitt's voice was in the constraints.
 
+![Sol LeWitt](../images/sol-lewitt-4f1.png)
+
+*Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
+
 The creative section in CLI.md is LeWitt's discipline applied to terminal output. You specify the constraints — voice, structure, stance — completely enough that the CLI's execution does not drown your authorship. The CLI is the executor; you are the author. The instructions in CLI.md are your wall-drawing constraints. The output is yours regardless of who typed the script. LeWitt argued, more than fifty years before this chapter, that the human who holds the constraints is the author. The chapter is his argument applied to a tool he could not have anticipated.
 
 ---

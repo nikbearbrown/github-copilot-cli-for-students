@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2560" width="1600" height="2560" preserveAspectRatio="xMidYMid meet" shape-rendering="geometricPrecision">
+  <g id="background"><rect x="0" y="0" width="1600" height="2560" fill="#F6D24A"/></g>
+  <g id="symbol-fragments" transform="rotate(-11, 800, 850)">
+    <polygon points="188,295 226,223 292,184 379,223 335,320 256,346" fill="#191919"/>
+    <polygon points="455,313 475,209 550,160 648,167 683,246 645,360 540,351" fill="#191919"/>
+    <polygon points="790,396 731,405 648,338 696,276 729,191 822,234 879,285 899,357" fill="#191919"/>
+    <polygon points="282,581 194,570 152,507 214,405 306,434 344,524" fill="#191919"/>
+    <polygon points="425,561 403,485 466,387 563,392 609,497 588,569 506,600" fill="#E85B3A"/>
+    <polygon points="716,584 733,533 782,493 848,490 913,546 878,602 831,637 759,653" fill="#191919"/>
+    <polygon points="251,910 127,830 147,703 258,682 360,754 350,840" fill="#191919"/>
+    <polygon points="451,780 416,693 501,653 599,687 625,775 564,861 478,826" fill="#191919"/>
+    <polygon points="952,797 884,871 783,866 702,821 692,739 758,686 833,627 914,701" fill="#191919"/>
+  </g>
+  <g id="title-letterforms">
+    <text x="120" y="1359" font-family="Arial Black, Arial, sans-serif" font-size="230" font-weight="900" letter-spacing="0" fill="#191919" textLength="1300" lengthAdjust="spacingAndGlyphs">GITHUB</text>
+    <text x="120" y="1596" font-family="Arial Black, Arial, sans-serif" font-size="230" font-weight="900" letter-spacing="0" fill="#E85B3A" textLength="1300" lengthAdjust="spacingAndGlyphs">COPILOT</text>
+    <text x="120" y="1833" font-family="Arial Black, Arial, sans-serif" font-size="230" font-weight="900" letter-spacing="0" fill="#191919" textLength="1300" lengthAdjust="spacingAndGlyphs">CLI FOR</text>
+    <text x="120" y="2070" font-family="Arial Black, Arial, sans-serif" font-size="230" font-weight="900" letter-spacing="0" fill="#191919" textLength="1300" lengthAdjust="spacingAndGlyphs">STUDENTS</text>
+  </g>
+</svg>

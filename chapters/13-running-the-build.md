@@ -197,6 +197,10 @@ The per-step loop in this chapter is PDCA at command granularity. Plan: the spec
 
 ---
 
+![W. Edwards Deming](../images/w-edwards-deming-efb.png)
+
+*Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
+
 ## Bridge
 
 The build is done when it passes the handoff conditions. Chapter 13 defines what "done" actually means at the level of the whole build.

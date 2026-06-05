@@ -226,6 +226,10 @@ The chapter's argument is Brooks applied to terminal AI. `gh copilot suggest` re
 
 ---
 
+![Frederick Brooks](../images/frederick-brooks-cn9.png)
+
+*Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
+
 ## Bridge
 
 You have a problem formulation. Chapter 8 teaches you to write the `gh copilot suggest` prompts that are *specifications*, not requests — the prompts that convert the formulation into commands the CLI can act on.

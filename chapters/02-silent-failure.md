@@ -244,7 +244,7 @@ Both are empirically open. The chapter operates on the convergent evidence and o
 
 🕰️ **William James** (1842–1910) — American psychologist whose chapter on **Habit** in *The Principles of Psychology* (1890) is the foundational account of how repeated engagement consolidates effortful cognitive struggle into durable capability.[^4] James wrote: *"All our life, so far as it has definite form, is but a mass of habits — practical, emotional, and intellectual — systematically organized for our weal or woe, and bearing us irresistibly toward our destiny, whatever the latter may be."* The neural mechanism James was describing — the consolidation of repeated effortful work into durable structure — is exactly the mechanism the Bastani, Kosmyna, and Anthropic findings show is broken by unguarded AI delegation. James argued, more than a century before the studies that measured it, that *the struggle is the mechanism*. The book's discipline is built on this argument. Without the struggle of working through the explanation, the consolidation that would convert today's `gh copilot suggest` use into tomorrow's terminal capability does not occur. The exit zero is the deceiving signal; the durable capability is what does or does not get built underneath.
 
-![William James](../images/william-james-p0v.png)
+![William James](../images/william-james-1gl.png)
 
 *Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
 

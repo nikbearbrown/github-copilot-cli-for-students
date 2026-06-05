@@ -169,7 +169,7 @@ The chapter operates on OpenAI's own published guidance, on the structural argum
 
 🕰️ **Grace Hopper** (1906–1992) — computer scientist and US Navy Rear Admiral who developed COBOL and the A-0 compiler and who insisted, across her career, that "done" must be *defined* before it can be verified. Hopper's account of programming was that the practitioner's discipline is in *specifying correctness explicitly* — not assuming that the absence of errors equals correctness. She wrote: *"The most dangerous phrase in the language is 'we've always done it this way.'"*[^2] The dangerous middle is exactly the failure mode that "we've always done it this way" produces — the command that ran fine before is run again, the condition that was met before is checked again, and the case where the unchecked condition matters is the case where the failure occurs. Hopper's insistence on explicit verification criteria is the handoff condition principle stated at the founding of software engineering. The chapter's discipline is hers, restated for `gh copilot suggest` and applied with care.
 
-![Grace Hopper](../images/grace-hopper-wqk.png)
+![Grace Hopper](../images/grace-hopper-w8h.png)
 
 *Puppet Art by [Nik Bear Brown](https://www.nikbearbrown.com/).*
 
